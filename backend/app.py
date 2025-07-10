@@ -4,6 +4,15 @@ from io import BytesIO
 import base64
 import requests
 
+# Load API keys from a .env file if present
+from config import (
+    ELEVENLABS_API_KEY,
+    ELEVENLABS_VOICE_ID,
+    OPENAI_API_KEY,
+    SPOTIFY_CLIENT_ID,
+    SPOTIFY_CLIENT_SECRET,
+)
+
 app = Flask(__name__)
 
 @app.route("/tts")
@@ -13,15 +22,7 @@ def serve_tts():
     return send_file(mp3_path, mimetype="audio/mpeg")
 
 
-# Environment variables for ElevenLabs API integration
-ELEVENLABS_API_KEY = os.environ.get("ELEVENLABS_API_KEY")
-# Default demo voice ID provided by ElevenLabs
-ELEVENLABS_VOICE_ID = os.environ.get("ELEVENLABS_VOICE_ID", "EXAVITQu4vr4xnSDxMaL")
 
-# Additional API keys
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
-SPOTIFY_CLIENT_ID = os.environ.get("SPOTIFY_CLIENT_ID")
-SPOTIFY_CLIENT_SECRET = os.environ.get("SPOTIFY_CLIENT_SECRET")
 
 
 def create_tts_audio(text: str) -> bytes:

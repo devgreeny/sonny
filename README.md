@@ -16,12 +16,11 @@ python run_sonny.py
 `POST /generate-tts` with JSON like `{"text": "Hello world"}`. The route
 calls the ElevenLabs API to create audio and returns an MP3 stream.
 
-Set the environment variable `ELEVENLABS_API_KEY` with your ElevenLabs key.
-Optionally override `ELEVENLABS_VOICE_ID` to choose a different voice.
+Create a `.env` file at the project root (see `.env.example`) and provide your API keys. At minimum set `ELEVENLABS_API_KEY`. You can also override `ELEVENLABS_VOICE_ID`.
 
 ## Reddit + Spotify Test
 
-Set the following environment variables for extra features:
+Add the following keys in your `.env` file for extra features:
 
 - `OPENAI_API_KEY` for summarizing Reddit posts
 - `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET` for retrieving a Spotify token
